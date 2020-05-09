@@ -12,6 +12,8 @@ public class User {
 
     private String hobby;
 
+    private String lesson;
+
     public String getFbUserName() {
         return fbUserName;
     }
