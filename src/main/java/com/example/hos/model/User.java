@@ -10,6 +10,8 @@ public class User {
     @Value("${user.fb.password}")
     private String fbUserPassword;
 
+    private String hobby;
+
     public String getFbUserName() {
         return fbUserName;
     }
