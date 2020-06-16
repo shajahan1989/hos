@@ -1,34 +1,34 @@
 package com.example.hos;
 
-import com.example.hos.model.User;
-import com.example.hos.model.UserConfigDemo;
+import com.example.hos.model.Doctor;
+import com.example.hos.service.DoctorService;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.logging.Logger;
 
 @RestController
 public class HelloWorldController {
 
-    @Autowired
-    private User user;
+
 
     @Autowired
-    private UserConfigDemo userConfigDemo;
+    private DoctorService doctorService;
 
-    @GetMapping("/hi")
-    public String getMsg(){
-        return "hi";
+    @GetMapping("/doctors")
+    public List<Doctor> getAllDoctor(){
+        return doctorService.getAllDoctor();
     }
-
-    @GetMapping("/users")
-    public  String getUsers(){
-        return user.toString();
-    }
-
-     @GetMapping("/userconfig")
-     public String getUserConfig(){
-        return userConfigDemo.toString();
+     @PostMapping("/addDoctor")
+     public void addDoctor(@RequestBody Doctor doctor){
+           doctorService.addDoctor(doctor);
      }
 
+     @GetMapping("/ByDocName/{docName}")
+     public List<Doctor> getAllDocByFirstName(@PathVariable String docName){
+          return doctorService.getAllDocByFirstName(docName);
+     }
 
 }
