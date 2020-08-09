@@ -11,4 +11,9 @@ public interface DoctorRepository extends JpaRepository<Doctor,Long> {
     @Query("select d from Doctor d where d.docName =?1")
     List<Doctor> getAllDocByFirstName(String docName);
 
+    Doctor findBydocName(String name);
+
+
+
+
 }
