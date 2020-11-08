@@ -15,8 +15,6 @@ public class DoctorService {
     @Autowired
     private DoctorRepository doctorRepository;
 
-
-
   public   List<Doctor> getAllDoctor(){
          return doctorRepository.findAll();
 
